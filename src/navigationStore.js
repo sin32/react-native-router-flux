@@ -524,7 +524,7 @@ class NavigationStore {
 
   setCustomReducer = (Navigator) => {
     this.getStateForAction = Navigator.router.getStateForAction;
-    const reducer = createReducer();
+    const reducer = createReducer(this);
     Navigator.router.getStateForAction = (cmd, state) => (this.reducer ? this.reducer(state, cmd) : reducer(state, cmd));
   };
 
@@ -987,4 +987,5 @@ class NavigationStore {
   };
 }
 
+export { NavigationStore };
 export default new NavigationStore();
