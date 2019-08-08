@@ -146,6 +146,8 @@ interface StackStatic extends React.ComponentClass<StackProps> {}
 
 export var Actions: ActionsGenericStatic;
 export type Actions = ActionsGenericStatic;
+export var NavigationStore: ActionsGenericStatic;
+export type NavigationStore = ActionsGenericStatic;
 interface ActionsStatic {
   currentScene: any;
   jump: (sceneKey: string, props?: any) => void;
