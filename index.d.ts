@@ -21,6 +21,7 @@ interface RouterProps extends React.Props<Router> {
     onStateChange?: Function;
     getSceneStyle?: Function;
     uriPrefix?: string;
+    navigationStore?: any;
 }
 interface RouterStatic extends React.ComponentClass<RouterProps> { }
 
@@ -146,8 +147,6 @@ interface StackStatic extends React.ComponentClass<StackProps> {}
 
 export var Actions: ActionsGenericStatic;
 export type Actions = ActionsGenericStatic;
-export var NavigationStore: ActionsGenericStatic;
-export type NavigationStore = ActionsGenericStatic;
 interface ActionsStatic {
   currentScene: any;
   jump: (sceneKey: string, props?: any) => void;
@@ -164,6 +163,21 @@ interface ActionsStatic {
 interface ActionsGenericStatic extends ActionsStatic {
   [key: string]: (props?: any) => void;
 }
+
+export declare class NavigationStore {
+  currentScene: any;
+  jump: (sceneKey: string, props?: any) => void;
+  pop: () => void;
+  popAndPush: (sceneKey: string, props?: any) => void;
+  popTo: (sceneKey: string, props?: any) => void;
+  push: (sceneKey: string, props?: any) => void;
+  refresh: (props?: any) => void;
+  replace: (sceneKey: string, props?: any) => void;
+  reset: (sceneKey: string, props?: any) => void;
+  drawerOpen?: any;
+  drawerClose?: any;
+}
+// export type NavigationStore = NavigationStore;
 
 export type ActionConstShort = 'jump' | 'push' | 'replace' | 'pop' | 'popTo' | 'refresh' | 'reset';
 export declare const ActionConst: ActionConst;
